@@ -1,12 +1,12 @@
 import { useRef, useState, useEffect } from "react";
 import ePub from "epubjs";
-import { Spin } from 'antd'; 
+import { Spin } from 'antd';
 import { LoadingOutlined } from "@ant-design/icons";
 
 const EBookReader = () => {
   const ePubRef = useRef(null);
   const url = 'book.epub';
-  const bookURL = `http://localhost:3000/${url}`;
+  const bookURL = `http://localhost:8000/${url}`;
   const [rendition, setRendition] = useState();
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState();
@@ -22,8 +22,7 @@ const EBookReader = () => {
       const book = ePub(ePubData);
 
       //電子書渲染到DOM元素上
-      const renditionInstance = book.renderTo
-      (ePubRef.current, {
+      const renditionInstance = book.renderTo(ePubRef.current, {
         width : "100%",
         height : "100%",
       });
